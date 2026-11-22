@@ -46,3 +46,15 @@ L1:
     ; combine and store
     xor  ah, ah             ; discard remainder
     add  ax, cx             ; sum of all three 
+    
+terms
+    mov  arrB[si], al       ; result max is 127, fits in a byte
+
+    inc  si                 ; i++
+    cmp  si, 10
+    jb   L1                 ; repeats while i < 10, so exactly 10 iterations
+
+    mov  ah, 4Ch            ; exit to DOS
+    int  21h
+main endp
+end main
